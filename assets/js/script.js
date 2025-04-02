@@ -9,15 +9,22 @@ function calcularRutVerificador() {
         rut = rut.toString();  // despues de asegurarse que el dato introducido sea un numero, lo vuelve string para luego convertirlo en arreglo
         rut = rut.split('');
         let digitoverificador = 0;
-        let x = 0;
-
-        for (let i = 2; x < rut.length; i++) {
-            digitoverificador += parseInt(rut[rut.length - 1 - x]) * i; // multiplica desde derecha a izquierda
+        let x = 2 ;
+     
+        for (let i = 7; i > -1 ; i--){
+          //  alert('Empezamos a calcular = ' + rut[i] + ' * ' + x);
+            digitoverificador += parseInt(rut[i]) * x;
+         //   alert(digitoverificador);
             x++;
-            if (i === 7) i = 1; // reinicia el multiplicador a 2 despues del 7 y el bucle acaba cuando x recorre al arrgelo por completo
+            if(x == 8){
+                x = 2;
+            }
         }
 
-        digitoverificador = digitoverificador % 11
+        
+
+
+        digitoverificador = digitoverificador % 11;
         digitoverificador = 11 - digitoverificador;
 
         if (digitoverificador == 11) {
